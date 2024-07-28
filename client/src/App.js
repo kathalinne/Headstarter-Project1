@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWind, faThermometerHalf, faTint, faSmog } from '@fortawesome/free-solid-svg-icons';
@@ -6,7 +6,15 @@ import { faWind, faThermometerHalf, faTint, faSmog } from '@fortawesome/free-sol
 function App() {
     const [location, setLocation] = useState('');
     const [data, setData] = useState(null);
-    const [error, setError] = useState('');
+    const [error, setError] = useState(localStorage.getItem('error') || '');
+    const [loading, setLoading] = useState(false);
+    const [invalidCount, setInvalidCount] = useState(parseInt(localStorage.getItem('invalidCount'), 10) || 0);
+
+    useEffect(() => {
+        localStorage.setItem('error', error);
+        localStorage.setItem('invalidCount', invalidCount);
+    }, [error, invalidCount]);
+
 
     const fetchAQI = async (e) => {
         e.preventDefault();
@@ -14,9 +22,11 @@ function App() {
 
         if (!city || !state) {
             setError('Please enter a valid city and state.');
+            handleInvalidEntry();
             return;
         }
 
+        setLoading(true);
         try {
             const response = await fetch(`/query_city?city=${city}&state=${state}&country=USA`);
             const result = await response.json();
@@ -24,14 +34,34 @@ function App() {
             if (response.ok) {
                 setData(result);
                 setError('');
+                setInvalidCount(0);
             } else {
                 setData(null);
                 setError(result.error || 'Failed to fetch data');
+                handleInvalidEntry();
             }
         } catch (err) {
             setError('Failed to fetch data');
+            handleInvalidEntry();
+        } finally {
+            setLoading(false);
         }
     };
+
+    const handleInvalidEntry = () => {
+        setInvalidCount(prevCount => {
+            const newCount = prevCount + 1;
+            if (newCount >= 1) {
+                window.location.reload();
+            } else {
+                setTimeout(() => {
+                    setError('');
+                }, 5000); // Clear error message after 5 seconds
+            }
+            return newCount;
+        });
+    };
+    
 
     return (
         <div className='App'>
@@ -46,8 +76,9 @@ function App() {
                         />
                         <button type="submit" className="submitButton">Get AQI</button>
                     </form>
-
-                    {data && (
+                    
+                    {loading && <p> </p>}
+                    {data && !loading && (
                         <div id="id" className="info">
                             <h5><FontAwesomeIcon icon={faSmog} /> AQI: {data.aqi}</h5>
                             <p><FontAwesomeIcon icon={faThermometerHalf} /> Temperature: {data.temp}°C</p>
@@ -73,7 +104,7 @@ function App() {
                         </div>
                     )}
 
-                    {error && <p className="error">{error}</p>}
+                    {error && !loading && <p className="error">{error}</p>}
                 </div>
             </header>
         </div>
