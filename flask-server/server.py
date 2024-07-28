@@ -17,7 +17,7 @@ def get_city_info():
     result = {
       "city": data['data']['city'],
       "aqi": data['data']['current']['pollution']['aqius'],
-      "temp": data['data']['current']['weather']['tp'],
+      "temp": int(data['data']['current']['weather']['tp']),
       "humidity": data['data']['current']['weather']['hu'],
       "windspeed": data['data']['current']['weather']['ws']
     }

@@ -34,24 +34,26 @@ function App() {
     return (
         <div className='App'>
             <header className="App-header">
-                <form onSubmit={fetchAQI}>
-                    <input
-                        type="text"
-                        value={location}
-                        onChange={(e) => setLocation(e.target.value)}
-                        placeholder="Enter city, state (e.g., Salem, Oregon)"
-                    />
-                    <button type="submit">Get AQI</button>
-                </form>
+                <div className="container">
+                    <form onSubmit={fetchAQI}>
+                        <input
+                            type="text"
+                            value={location}
+                            onChange={(e) => setLocation(e.target.value)}
+                            placeholder="City, State"
+                        />
+                        <button type="submit" className="submitButton">Get AQI</button>
+                    </form>
 
-                {data && (
-                    <div>
-                        <p>AQI: {data.aqi}</p>
-                        <p>Temperature: {data.temp}°C</p>
-                        <p>Humidity: {data.humidity}%</p>
-                        <p>Wind Speed: {data.windspeed} m/s</p>
-                    </div>
-                )}
+                    {data && (
+                        <div className="info">
+                            <p>AQI: {data.aqi}</p>
+                            <p>Temperature: {data.temp}°C</p>
+                            <p>Humidity: {data.humidity}%</p>
+                            <p>Wind Speed: {data.windspeed} m/s</p>
+                        </div>
+                    )}
+                </div>
             </header>
         </div>
     );
