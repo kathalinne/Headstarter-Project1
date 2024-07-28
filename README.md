@@ -9,41 +9,41 @@ We would like to add machine learning models that aid in the analysis of prolong
 ### Windows
 1. Create two working terminal:
     #### Terminal One:
-        a. ```cd flask-server```
-        b. Make sure there is not a venv file in the flask-server folder
-            1. If there is run ```rmdir venv```
-        c. Create a new virtual environment using: ```python -m venv venv```
-        d. Activate the virtual environment by running: ``` .\venv\Scripts\activate ```
-        e. Install Flask: ```pip install Flask```
-            1. update if needed
-        f. Install: ```pip install flask-cors```
-        g. Install: ```pip install requests```
-        h. Run python file: ```python server.py```
-        i. View page at given URL
+    a. ```cd flask-server```
+    b. Make sure there is not a venv file in the flask-server folder
+        1. If there is run ```rmdir venv```
+    c. Create a new virtual environment using: ```python -m venv venv```
+    d. Activate the virtual environment by running: ``` .\venv\Scripts\activate ```
+    e. Install Flask: ```pip install Flask```
+        1. update if needed
+    f. Install: ```pip install flask-cors```
+    g. Install: ```pip install requests```
+    h. Run python file: ```python server.py```
+    i. View page at given URL
     #### Terminal Two:
-        a. ```cd client```
-        b. Run: ```npm install axios```
-        c. Start the React app by running: ```npm start```
+    a. ```cd client```
+    b. Run: ```npm install axios```
+    c. Start the React app by running: ```npm start```
 
 ### Mac
 1. Create two working terminals:
     #### Terminal One:
-        a. ```cd flask-server```
-        b. Make sure there is not a venv file in the flask-server folder
-            1. If there is run ```rm -rf venv```
-        c. Create a new virtual environment using: ```python3 -m venv venv```
-        d. Activate the virtual environment by running: ```source venv/bin/activate```
-        e. Install Flask: ```pip install Flask```
-            1. update if needed
-        f. Install: ```pip install flask-cors```
-        g. Install: ```pip install requests```
-        h. Run python file: ```python3 server.py```
-        i. View page at given URL
+    a. ```cd flask-server```
+    b. Make sure there is not a venv file in the flask-server folder
+        1. If there is run ```rm -rf venv```
+    c. Create a new virtual environment using: ```python3 -m venv venv```
+    d. Activate the virtual environment by running: ```source venv/bin/activate```
+    e. Install Flask: ```pip install Flask```
+        1. update if needed
+    f. Install: ```pip install flask-cors```
+    g. Install: ```pip install requests```
+    h. Run python file: ```python3 server.py```
+    i. View page at given URL
     
     #### Terminal Two:
-        a. ```cd client```
-        b. Run: ```npm install axios```
-        c. Start the React app by running: ```npm start```
+    a. ```cd client```
+    b. Run: ```npm install axios```
+    c. Start the React app by running: ```npm start```
 
     App is now fully running!
 
