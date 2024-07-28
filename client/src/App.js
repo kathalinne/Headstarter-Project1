@@ -1,32 +1,37 @@
-//6:04
-import React, {useState, useEffect} from 'react'
+import React, { useState } from 'react';
+import axios from 'axios';
+import './App.css';
 
 function App() {
+  const [inputValue, setInputValue] = useState('');
+  const [message, setMessage] = useState('');
 
-  const [data, setData] = useState([{}])
-
-  useEffect(() => {
-    fetch("/members").then(
-      res => res.json()
-    ).then(
-      data => {
-        setData(data)
-        console.log(data)
-      }
-    )
-  }, [])
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post('http://127.0.0.1:5000/check_code', { code: inputValue });
+      setMessage(response.data.message);
+    } catch (error) {
+      setMessage('There was an error processing your request.');
+    }
+  };
 
   return (
-    <div>
-      {(typeof data.members === 'undefined') ? (
-        <p>Loading...</p>
-      ): (
-        data.members.map( (member, i) => (
-          <p key={i}> {member} </p>
-        ) )
-      )}
+    <div className="App">
+      <header className="App-header">
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(e) => setInputValue(e.target.value)}
+            placeholder="Enter the code"
+          />
+          <button type="submit">Submit</button>
+        </form>
+        {message && <p>{message}</p>}
+      </header>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
