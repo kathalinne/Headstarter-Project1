@@ -48,11 +48,28 @@ function App() {
                     </form>
 
                     {data && (
-                        <div className="info">
+                        <div id="id" className="info">
                             <h5><FontAwesomeIcon icon={faSmog} /> AQI: {data.aqi}</h5>
                             <p><FontAwesomeIcon icon={faThermometerHalf} /> Temperature: {data.temp}°C</p>
-                            <p><FontAwesomeIcon icon={faTint} /> Humidity: {data.humidity}%</p>
+                            <p><FontAwesomeIcon icon={faTint} /> Humidity: {data.humidity}%</p> 
                             <p><FontAwesomeIcon icon={faWind} /> Wind Speed: {data.windspeed} m/s</p>
+                            <p>
+                                {data.aqi <= 50 ? (
+                                    <span style={{ color: 'green' }}>Good Air Quality</span>
+                                ) : data.aqi <= 100 ? (
+                                    <mark>
+                                    <span style={{ color: 'dark-yellow' }}>Moderate Air Quality</span>
+                                    </mark>
+                                ) : data.aqi <= 150 ? (
+                                    <span style={{ color: 'orange' }}>Unhealthy for Sensitive Groups</span>
+                                ) : data.aqi <= 200 ? (
+                                    <span style={{ color: 'red' }}>Unhealthy</span>
+                                ) : data.aqi <= 300 ? (
+                                    <span style={{ color: 'purple' }}>Very Unhealthy</span>
+                                ) : (
+                                    <span style={{ color: 'maroon' }}>Hazardous</span>
+                                )}
+                            </p>
                         </div>
                     )}
 

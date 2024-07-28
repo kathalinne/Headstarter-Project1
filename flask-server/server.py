@@ -1,5 +1,6 @@
 from flask import Flask, jsonify, request
 import requests
+
 app = Flask(__name__)
 
 API_KEY = "26cbc76c-5aef-4cdd-a431-ebb55b26744a"
