@@ -1,6 +1,7 @@
 # Air Quality Web App
+##Description
 
-
+##How to Use
 1. Create two working terminals. Terminal 1: cd into client & Terminal 2: cd into flask-server
 2. In terminal 2, make sure there is no venv file in flask-server folder, if so ``` rmdir venv ```
 3. In temrinal 2, then create a new one using ``` python -m venv venv ```
@@ -15,3 +16,5 @@
 
 To end running app, simply CTRL-C for both terminals, then to deactivate virtual environment in Terminal 2, type in command ```deactivate```
 
+##Resources
+https://api-docs.iqair.com/?version=latest
