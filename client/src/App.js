@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './App.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faWind, faThermometerHalf, faTint, faSmog } from '@fortawesome/free-solid-svg-icons';
 
 function App() {
     const [location, setLocation] = useState('');
@@ -47,12 +49,14 @@ function App() {
 
                     {data && (
                         <div className="info">
-                            <p>AQI: {data.aqi}</p>
-                            <p>Temperature: {data.temp}°C</p>
-                            <p>Humidity: {data.humidity}%</p>
-                            <p>Wind Speed: {data.windspeed} m/s</p>
+                            <h5><FontAwesomeIcon icon={faSmog} /> AQI: {data.aqi}</h5>
+                            <p><FontAwesomeIcon icon={faThermometerHalf} /> Temperature: {data.temp}°C</p>
+                            <p><FontAwesomeIcon icon={faTint} /> Humidity: {data.humidity}%</p>
+                            <p><FontAwesomeIcon icon={faWind} /> Wind Speed: {data.windspeed} m/s</p>
                         </div>
                     )}
+
+                    {error && <p className="error">{error}</p>}
                 </div>
             </header>
         </div>
