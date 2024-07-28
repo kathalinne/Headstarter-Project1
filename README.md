@@ -1,4 +1,4 @@
-# Headstarter-Project1
+# Air Quality Web App
 
 
 1. Create two working terminals. Terminal 1: cd into client & Terminal 2: cd into flask-server
