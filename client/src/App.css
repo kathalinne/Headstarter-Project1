@@ -1,9 +1,11 @@
-.App {
+.App, html {
   text-align: center;
+  background-color: #282c34;
+  margin: 0;
+  height: 100%;
 }
 
 .App-header {
-  background-color: #282c34;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
