@@ -1,6 +1,6 @@
 # Air Quality Web App
 ## Description
-We chose this hackathon to work on tech stack that we weren't too familiar on before to build upon our skills as programmers. This user-friendly application is designed to provide real-time air quality rates and even weather updates. It combines the power of Flask and Python on the backend with the dynamic, responsive interface of React on the frontend.
+We chose this hackathon to work on a tech stack that we were not too familiar with to build upon our skills as programmers. This user-friendly application is designed to provide real-time air quality rates and even weather updates. It combines the power of Flask and Python on the backend with the dynamic, responsive interface of React on the frontend.
 
 ## How to Use
 1. Create two working terminals. Terminal 1: cd into client & Terminal 2: cd into flask-server
